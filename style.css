@@ -1,0 +1,409 @@
+/* ==========================================================================
+   QR Code Studio Pro - Enhanced Stylesheet (style.css)
+   Mobile-First, Fluid Multi-Device Responsive & High-Contrast Navbar
+   Designed & Deployed by Jatin Jangid
+   ========================================================================== */
+
+:root {
+    --bg-base: #4f46e5;
+    --bg-mesh-1: #4338ca;
+    --bg-mesh-2: #7c3aed;
+    --bg-mesh-3: #2563eb;
+    --bg-mesh-4: #a855f7;
+    
+    --card-bg: #ffffff;
+    --card-border: rgba(255, 255, 255, 0.6);
+    --card-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.5);
+    --card-inner-bg: #f8fafc;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    
+    --input-bg: #f8fafc;
+    --input-border: #e2e8f0;
+    --input-text: #0f172a;
+    
+    --subcard-bg: #f8fafc;
+    --subcard-border: #e2e8f0;
+    --tab-bar-bg: rgba(248, 250, 252, 0.95);
+    --tab-btn-color: #64748b;
+    --preview-bg: #f1f5f9;
+    --preview-border: #e2e8f0;
+    
+    /* High-contrast luxury translucent glass navbar (Light Mode) */
+    --nav-bg: rgba(255, 255, 255, 0.28);
+    --nav-border: rgba(255, 255, 255, 0.48);
+    --nav-text-title: #0f172a;
+    --nav-text-sub: #5b21b6;
+    --nav-text-links: #1e1b4b;
+    --nav-text-links-hover: #ffffff;
+    --nav-btn-bg: rgba(255, 255, 255, 0.4);
+    --nav-btn-border: rgba(255, 255, 255, 0.6);
+    --nav-btn-text: #0f172a;
+    --nav-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+body.dark-theme {
+    --bg-base: #030712;
+    --bg-mesh-1: #090d16;
+    --bg-mesh-2: #0f172a;
+    --bg-mesh-3: #1e1b4b;
+    --bg-mesh-4: #172554;
+    
+    --card-bg: #111827;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.07);
+    --card-inner-bg: #0b0f19;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    --input-bg: #0b0f19;
+    --input-border: #1f2937;
+    --input-text: #f8fafc;
+    
+    --subcard-bg: #0b0f19;
+    --subcard-border: #1f2937;
+    --tab-bar-bg: #0f172a;
+    --tab-btn-color: #94a3b8;
+    --preview-bg: #080c14;
+    --preview-border: #1f2937;
+    
+    /* High-contrast stealth translucent glass navbar (Dark Mode) */
+    --nav-bg: rgba(15, 23, 42, 0.55);
+    --nav-border: rgba(255, 255, 255, 0.12);
+    --nav-text-title: #f8fafc;
+    --nav-text-sub: #c084fc;
+    --nav-text-links: #e2e8f0;
+    --nav-text-links-hover: #a855f7;
+    --nav-btn-bg: rgba(124, 58, 237, 0.25);
+    --nav-btn-border: rgba(124, 58, 237, 0.45);
+    --nav-btn-text: #f8fafc;
+    --nav-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+    background-color: var(--bg-base);
+    background-image: 
+        radial-gradient(at 15% 15%, var(--bg-mesh-2) 0px, transparent 55%),
+        radial-gradient(at 85% 10%, var(--bg-mesh-4) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, var(--bg-mesh-1) 0px, transparent 60%),
+        radial-gradient(at 80% 85%, var(--bg-mesh-3) 0px, transparent 55%),
+        radial-gradient(at 10% 90%, var(--bg-mesh-2) 0px, transparent 50%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+/* Subtle Ambient Glow Effect Behind Content */
+.ambient-bg-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+    background: radial-gradient(circle at 50% 20%, rgba(168, 85, 247, 0.15), transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.12), transparent 40%);
+}
+
+/* High-Contrast Glass Navbar with True Translucency */
+.navbar-glass {
+    background: var(--nav-bg) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid var(--nav-border) !important;
+    box-shadow: var(--nav-shadow) !important;
+}
+
+.nav-title {
+    color: var(--nav-text-title) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+body.dark-theme .nav-title {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.nav-subtitle {
+    color: var(--nav-text-sub) !important;
+}
+
+.nav-link {
+    color: var(--nav-text-links) !important;
+    padding: 6px 14px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--nav-text-links-hover) !important;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-theme .nav-link:hover {
+    background: rgba(124, 58, 237, 0.25);
+}
+
+/* Main Studio Card */
+.studio-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+}
+
+@media (min-width: 640px) {
+    .studio-card {
+        border-radius: 32px;
+    }
+}
+
+.studio-subcard {
+    background: var(--subcard-bg);
+    border: 1px solid var(--subcard-border);
+}
+
+.studio-tab-bar {
+    background: var(--tab-bar-bg);
+    border-bottom: 1px solid var(--subcard-border);
+    -webkit-overflow-scrolling: touch;
+}
+
+.studio-preview-box {
+    background: var(--preview-bg);
+    border: 1px solid var(--preview-border);
+}
+
+/* Dynamic Text Colors */
+.text-main {
+    color: var(--text-primary) !important;
+}
+
+.text-sub {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted-custom {
+    color: var(--text-muted) !important;
+}
+
+/* Glass Pill Badge */
+.glass-pill {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+body.dark-theme .glass-pill {
+    background: rgba(124, 58, 237, 0.25);
+    border: 1px solid rgba(124, 58, 237, 0.45);
+}
+
+/* Mobile-Friendly Inputs (16px font to avoid iOS zoom) */
+.input-glow {
+    background: var(--input-bg) !important;
+    border: 2px solid var(--input-border) !important;
+    color: var(--input-text) !important;
+    font-size: 16px !important;
+    transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+    .input-glow {
+        font-size: 15px !important;
+    }
+}
+
+.input-glow:focus {
+    border-color: #7c3aed !important;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+    outline: none;
+}
+
+/* Navigation Tab Buttons with Touch optimization */
+.tab-btn {
+    position: relative;
+    transition: all 0.2s ease;
+    color: var(--tab-btn-color);
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.tab-btn:hover {
+    color: #7c3aed;
+    background: rgba(124, 58, 237, 0.08);
+}
+
+.tab-btn.active {
+    color: #7c3aed !important;
+    background: rgba(124, 58, 237, 0.12) !important;
+    font-weight: 700;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+    height: 3px;
+    background: #7c3aed;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Action Buttons */
+.btn-gradient {
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+    transition: all 0.25s ease;
+    touch-action: manipulation;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -6px rgba(124, 58, 237, 0.5);
+}
+
+.btn-gradient:active {
+    transform: translateY(0);
+}
+
+/* Color Palette Swatches */
+.color-preset {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+body.dark-theme .color-preset {
+    border: 2px solid #374151;
+}
+
+.color-preset:hover, .color-preset:active {
+    transform: scale(1.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive QR Code Canvas Wrapper */
+#qr-canvas-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    max-width: 100%;
+}
+
+@media (min-width: 640px) {
+    #qr-canvas-wrapper {
+        padding: 22px;
+        border-radius: 24px;
+    }
+}
+
+#qrcode {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#qrcode canvas, #qrcode img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.35);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 58, 237, 0.7);
+}
+
+/* Floating Toast Alert with Safe Area for Mobile */
+.toast {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    right: 16px;
+    left: 16px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+    .toast {
+        left: auto;
+        right: 24px;
+        margin: 0;
+    }
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* High-Contrast Theme Toggle Button Switch */
+.theme-toggle-btn {
+    background: var(--nav-btn-bg) !important;
+    border: 1px solid var(--nav-btn-border) !important;
+    color: var(--nav-btn-text) !important;
+    transition: all 0.25s ease;
+    touch-action: manipulation;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
